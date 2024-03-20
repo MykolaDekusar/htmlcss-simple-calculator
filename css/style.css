@@ -29,7 +29,8 @@
 .black-bar{
     display: flex;
     background-color: black;
-    height: 60px;
+    height: 65px;
+    margin-bottom: 20px;
 }
 
 .calc-number {
@@ -40,4 +41,21 @@
     font-size: 35px;
     align-items: center;
     padding-right: 15px;
+}
+
+.col-1 {
+    display: flex;
+    flex-direction: column;
+    background-color: brown;
+    justify-content: space-around;
+    gap: 30px;
+    
+}
+
+.button-style {
+
+    width: 30px;
+    height: 30px;
+    background-color: gray;
+
 }
