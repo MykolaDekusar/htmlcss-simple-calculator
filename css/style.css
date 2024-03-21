@@ -43,8 +43,7 @@
 }
 
 .col-1 {
-    display: inline-flex;
-    
+    display: flex;
     gap: 10px;
     max-width: 75%;
     flex-wrap: wrap;
@@ -85,9 +84,11 @@
 }
 
 .col-2{
-    display: inline-flex;
+    display:flex;
     flex-direction: column;
     gap: 10px;
+    padding-left: 10px;
+    
 
 }
 
@@ -103,4 +104,8 @@
 
 .blue {
     background-color: rgba(0, 166, 255, 0.82);
+}
+
+.tastierino {
+    display: flex;
 }
