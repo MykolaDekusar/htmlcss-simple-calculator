@@ -22,6 +22,10 @@ function logica(valore) {
             break;
         case '=':
             risultato.innerText = operazione(operation);
+            numero = operazione(operation);
+            console.log(numero);
+            operation = '';
+            primoNumero = '';
             break;
         case 'c':
             numero = '';
@@ -65,6 +69,9 @@ function operazione(valore) {
             calcolo = Number(primoNumero) * Number(numero);
             return calcolo;
         case ('/'):
+            if (Number(numero) === 0) {
+                return 'Errore';
+            }
             calcolo = Number(primoNumero) / Number(numero);
             return calcolo;
     }
