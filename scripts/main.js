@@ -2,6 +2,7 @@
 let numero = '';
 let primoNumero = '';
 let calcolo = 0;
+let operation = '';
 const risultato = document.getElementById("result");
 const buttons = document.querySelector('.tastierino');
 
@@ -12,7 +13,6 @@ buttons.addEventListener('click', function (evento) {
 })
 
 function logica(valore) {
-    let num = 0;
     switch (valore) {
         default:
             if (!isNaN(Number(valore))) {
@@ -21,40 +21,51 @@ function logica(valore) {
             }
             break;
         case '=':
-            risultato.innerText = operazione();
+            risultato.innerText = operazione(operation);
             break;
         case 'c':
             numero = '';
             primoNumero = '';
             calcolo = 0;
+            operation = '';
             risultato.innerText = '0';
             break;
         case '+':
             primoNumero += numero;
             numero = '';
-            num = operazione(valore);
+            operation += valore;
             break;
         case '-':
             primoNumero += numero;
             numero = '';
+            operation += valore;
             break;
         case 'x':
             primoNumero += numero;
             numero = '';
+            operation += valore;
             break;
         case '/':
             primoNumero += numero;
             numero = '';
+            operation += valore;
             break;
     }
 }
 
 function operazione(valore) {
-    let calcolo = 0;
-    console.log(valore === '+');
     switch (valore) {
-        case (valore === '+'):
+        case ('+'):
             calcolo = Number(primoNumero) + Number(numero);
+            return calcolo;
+        case ('-'):
+            calcolo = Number(primoNumero) - Number(numero);
+            return calcolo;
+        case ('x'):
+            calcolo = Number(primoNumero) * Number(numero);
+            return calcolo;
+        case ('/'):
+            calcolo = Number(primoNumero) / Number(numero);
             return calcolo;
     }
 }
