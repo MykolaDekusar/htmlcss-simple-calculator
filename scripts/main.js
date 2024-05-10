@@ -1,27 +1,56 @@
 'use strict';
-let numeriUtente = '';
+let numero = '';
 const risultato = document.getElementById("result");
-//assegno i pulsanti della calcolatrice alle costanti
 const buttons = document.querySelector('.tastierino');
+
 buttons.addEventListener('click', function (evento) {
-    const valoreId = evento.target.innerHTML;
-    ottieniValore(valoreId);
+    const valoreId = evento.target.innerText;
+    //trasmetto alla funzione il valore del mio click
+    logica(valoreId);
 })
 
-console.log(numeriUtente);
-
-function ottieniValore(valoreId) {
-    switch (valoreId) {
+function logica(valore) {
+    let primoNumero = '';
+    let calcolo = 0;
+    switch (valore) {
         default:
-            //se è un numero lo aggiungo all'array
-            if (!isNaN(Number(valoreId))) {
-                numeriUtente += (Number(valoreId));
-                risultato.innerText = numeriUtente;
+            if (!isNaN(Number(valore))) {
+                numero += valore;
+                risultato.innerText = numero;
             }
-            return console.log(valoreId);
+            break;
+        case '=':
+            calcolo = Number(primoNumero) + Number(numero);
+            console.log(primoNumero, numero)
+            risultato.innerText = calcolo;
+            break;
         case 'c':
-            numeriUtente = '';
-            risultato.innerText = numeriUtente;
+            numero = '';
+            risultato.innerText = '0';
+            break;
+        case '+':
+            primoNumero += numero;
+            console.log(primoNumero);
+            console.log(numero);
+            numero = '';
+            break;
+        case '-':
+            primoNumero = numero;
+            console.log(primoNumero);
+            console.log(numero);
+            numero = 0;
+            break;
+        case 'x':
+            primoNumero = numero;
+            console.log(primoNumero);
+            console.log(numero);
+            numero = 0;
+            break;
+        case '/':
+            primoNumero = numero;
+            console.log(primoNumero);
+            console.log(numero);
+            numero = 0;
+            break;
     }
-
 }
