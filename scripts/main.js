@@ -1,5 +1,7 @@
 'use strict';
 let numero = '';
+let primoNumero = '';
+let calcolo = 0;
 const risultato = document.getElementById("result");
 const buttons = document.querySelector('.tastierino');
 
@@ -10,8 +12,7 @@ buttons.addEventListener('click', function (evento) {
 })
 
 function logica(valore) {
-    let primoNumero = '';
-    let calcolo = 0;
+    let num = 0;
     switch (valore) {
         default:
             if (!isNaN(Number(valore))) {
@@ -20,37 +21,40 @@ function logica(valore) {
             }
             break;
         case '=':
-            calcolo = Number(primoNumero) + Number(numero);
-            console.log(primoNumero, numero)
-            risultato.innerText = calcolo;
+            risultato.innerText = operazione();
             break;
         case 'c':
             numero = '';
+            primoNumero = '';
+            calcolo = 0;
             risultato.innerText = '0';
             break;
         case '+':
             primoNumero += numero;
-            console.log(primoNumero);
-            console.log(numero);
             numero = '';
+            num = operazione(valore);
             break;
         case '-':
-            primoNumero = numero;
-            console.log(primoNumero);
-            console.log(numero);
-            numero = 0;
+            primoNumero += numero;
+            numero = '';
             break;
         case 'x':
-            primoNumero = numero;
-            console.log(primoNumero);
-            console.log(numero);
-            numero = 0;
+            primoNumero += numero;
+            numero = '';
             break;
         case '/':
-            primoNumero = numero;
-            console.log(primoNumero);
-            console.log(numero);
-            numero = 0;
+            primoNumero += numero;
+            numero = '';
             break;
+    }
+}
+
+function operazione(valore) {
+    let calcolo = 0;
+    console.log(valore === '+');
+    switch (valore) {
+        case (valore === '+'):
+            calcolo = Number(primoNumero) + Number(numero);
+            return calcolo;
     }
 }
